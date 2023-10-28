@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant browser
+    participant server
+    participant user
+
+    user->>browser: Enters text and clicks Save
+    browser->>server: POST request to /data.json with new note
+    activate server
+    server-->>browser: HTTP POST 200 OK (Note added)
+    deactivate server
+
+    Note right of browser: The SPA updates the content using the new note

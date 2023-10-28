@@ -1,0 +1,29 @@
+sequenceDiagram
+    participant browser
+    participant server
+    participant user
+
+    user->>browser: Enters URL https://studies.cs.helsinki.fi/exampleapp/spa
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+    server-->>browser: HTML document for the SPA
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: the css file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server-->>browser: the JavaScript file
+    deactivate server
+
+    Note right of browser: The browser starts executing the SPA JavaScript code
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: JSON data for the SPA
+    deactivate server
+
+    Note right of browser: The SPA updates the content using JSON data
